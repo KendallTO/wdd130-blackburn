@@ -95,6 +95,14 @@ h2 {
     transform: rotate(-45deg);
 }
 
+footer {
+    background-color: #333;
+    text-align: center;
+    height: 50px;
+    width: 100%;
+    margin: 0% auto;
+}
+
 /* Basic responsiveness */
 @media (max-width: 900px) {
     .new-memes-grid {
