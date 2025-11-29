@@ -8,13 +8,13 @@
 <body>
 
   <header>
-    <div class="logo">
+    <a href="index.html" class="logo">
         <img src="memes/logo.png" alt="Meme Logo" />
-    </div>
+    </a>
 
     <nav>
-      <a href="#">Liked Memes</a>
-      <a href="#">Contact Us</a>
+      <a href="likedmemes.html">Liked Memes</a>
+      <a href="contactus.html">Contact Us</a>
     </nav>
   </header>
 
@@ -23,10 +23,18 @@
     <section>
       <h2>New Memes</h2>
       <div class="grid new-memes-grid">
-        <div class="meme-card"></div>
-        <div class="meme-card"></div>
-        <div class="meme-card"></div>
-        <div class="meme-card"></div>
+        <div class="meme-card" onclick="expandMeme(this)">
+          <img src="new_memes/vindiesel.jpg" alt="Vin Diesel Meme">
+        </div>
+        <div class="meme-card" onclick="expandMeme(this)">
+          <img src="new_memes/store.jpg" alt="Store Meme">
+        </div>
+        <div class="meme-card" onclick="expandMeme(this)">
+          <img src="new_memes/ice.jpg" alt="Ice Meme">
+        </div>
+        <div class="meme-card" onclick="expandMeme(this)">
+          <img src="new_memes/homeonbail.jpg" alt="Home on Bail Meme">
+        </div>
       </div>
     </section>
 
@@ -35,19 +43,65 @@
       <h2>Catalogue</h2>
       <div class="grid catalogue-grid">
         <!-- Row 1 -->
-        <div class="meme-card"></div>
-        <div class="meme-card"></div>
-        <div class="meme-card"></div>
+        <div class="meme-card" onclick="expandMeme(this)">
+          <img src="catalogue/wafflehouse.jpg" alt="Waffle House Meme">
+        </div>
+        <div class="meme-card" onclick="expandMeme(this)">
+          <img src="catalogue/poles.jpg" alt="Poles Meme">
+        </div>
+        <div class="meme-card" onclick="expandMeme(this)">
+          <img src="catalogue/path.jpg" alt="Path Meme">
+        </div>
         <!-- Row 2 -->
-        <div class="meme-card"></div>
-        <div class="meme-card"></div>
-        <div class="meme-card"></div>
+        <div class="meme-card" onclick="expandMeme(this)">
+          <img src="catalogue/parking.jpg" alt="Parking Meme">
+        </div>
+        <div class="meme-card" onclick="expandMeme(this)">
+          <img src="catalogue/meatdog.jpg" alt="Meat Dog Meme">
+        </div>
+        <div class="meme-card" onclick="expandMeme(this)">
+          <img src="catalogue/fridge.jpg" alt="Fridge Meme">
+        </div>
       </div>
     </section>
   </main>
   <footer>
     <p>Luke Blackburn</h2>
   </footer>
+
+  <script>
+    function expandMeme(element) {
+      if (element.classList.contains('expanded')) {
+        element.classList.remove('expanded');
+        // Remove the expanded clone
+        const expandedClone = document.querySelector('.meme-expanded-clone');
+        if (expandedClone) {
+          expandedClone.remove();
+        }
+      } else {
+        // Remove expanded class from any other meme
+        document.querySelectorAll('.meme-card.expanded').forEach(card => {
+          card.classList.remove('expanded');
+        });
+        // Remove any existing clones
+        document.querySelectorAll('.meme-expanded-clone').forEach(clone => {
+          clone.remove();
+        });
+        
+        // Create expanded clone
+        const clone = element.cloneNode(true);
+        clone.classList.add('meme-expanded-clone');
+        clone.onclick = function() {
+          element.classList.remove('expanded');
+          clone.remove();
+        };
+        document.body.appendChild(clone);
+        
+        // Add expanded class to original (makes it fade)
+        element.classList.add('expanded');
+      }
+    }
+  </script>
 
 </body>
 </html>
