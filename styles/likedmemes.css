@@ -81,12 +81,6 @@ h2 {
     height: 200px;
     width: 200px;
     margin: 1%;
-    border: 5px solid black;
+    border: 5px solid red;
     border-radius: 20px;
-    p {    
-        height: 100%;
-        width: 100%;
-        text-align: center;
-        line-height: 175px;
-    }
 }
